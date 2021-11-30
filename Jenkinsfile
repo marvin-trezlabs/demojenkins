@@ -1,3 +1,4 @@
+
 pipeline {
     agent any 
     environment {
@@ -28,13 +29,13 @@ pipeline {
 //       }
 //     }
     
-     // Stopping Docker containers for cleaner Docker run
-     stage('docker stop container') {
-         steps {
-            sh 'docker ps -f name=mypythonappContainer -q | xargs --no-run-if-empty docker container stop'
-            sh 'docker container ls -a -fname=mypythonappContainer -q | xargs -r docker container rm'
-         }
-       }
+    // Stopping Docker containers for cleaner Docker run
+    stage('docker stop container') {
+        steps {
+        sh 'docker ps -f name=mypythonappContainer -q | xargs --no-run-if-empty docker container stop'
+        sh 'docker container ls -a -fname=mypythonappContainer -q | xargs -r docker container rm'
+        }
+    }
     
     
     // Running Docker container, make sure port 8096 is opened in 
@@ -45,5 +46,4 @@ pipeline {
          }
       }
     }
-  }
 }
