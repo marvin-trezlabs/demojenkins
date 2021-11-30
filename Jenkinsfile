@@ -24,16 +24,16 @@ pipeline {
       }
     }
     
-     // Uploading Docker images into Docker Hub
-    stage('Upload Image') {
-     steps{    
-         script {
-            docker.withRegistry( '', registryCredential ) {
-            dockerImage.push()
-            }
-        }
-      }
-    }
+//      // Uploading Docker images into Docker Hub
+//     stage('Upload Image') {
+//      steps{    
+//          script {
+//             docker.withRegistry( '', registryCredential ) {
+//             dockerImage.push()
+//             }
+//         }
+//       }
+//     }
     
      // Stopping Docker containers for cleaner Docker run
      stage('docker stop container') {
