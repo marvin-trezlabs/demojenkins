@@ -3,10 +3,7 @@ pipeline {
   stages {
     stage('Building image') {
       steps {
-        withSonarQubeEnv(installationName: 'Sonar', credentialsId: 'Sonar') {
-          waitForQualityGate(credentialsId: 'Sonar', abortPipeline: true)
-        }
-
+        withSonarQubeEnv(installationName: 'Sonar', credentialsId: 'Sonar')
         script {
           dockerImage = docker.build registry
         }
