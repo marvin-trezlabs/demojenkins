@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('Building image') {
       steps {
-        withSonarQubeEnv(installationName: 'Sonar', credentialsId: 'Sonar') {
+        withSonarQubeEnv(installationName: 'Sonar', credentialsId: 'Sonar', envOnly: true) {
           sh 'echo "Preparing sonar"'
           waitForQualityGate(credentialsId: 'Sonar', webhookSecretId: 'Sonar', abortPipeline: true)
         }
