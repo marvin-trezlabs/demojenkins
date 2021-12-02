@@ -3,7 +3,10 @@ pipeline {
   stages {
     stage('Building image') {
       steps {
-        withSonarQubeEnv(installationName: 'Sonar', credentialsId: 'Sonar')
+        withSonarQubeEnv(installationName: 'Sonar', credentialsId: 'Sonar', envOnly: true) {
+          sh 'echo \'trying\''
+        }
+
         script {
           dockerImage = docker.build registry
         }
